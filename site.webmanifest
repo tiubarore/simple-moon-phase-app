@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "short_name": "",
+  "name": "moon phase application",
+  "short_name": "moon phase",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +13,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "start_URL": "https://relaxed-nasturtium-ec1d93.netlify.app/",
+  "theme_color": "#FFF5E0",
+  "background_color": "#FFF5E0",
   "display": "standalone"
 }
