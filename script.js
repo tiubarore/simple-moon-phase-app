@@ -11,6 +11,8 @@ fetch(
       const phase = document.querySelector("#phase");
       const img = document.querySelector("img");
       const nextPhase = document.querySelector("#nextPhase");
+
+      // Set the display based on the current moon phase
       if (phaseValue === 0) {
         phase.innerText = "Moon Phase: New Moon";
         img.src = "./img/newmoon.png";
@@ -51,3 +53,45 @@ fetch(
     }
     moonPhase();
   });
+
+/*
+fetch(
+  "https://api.nasa.gov/planetary/apod?api_key=LPK8s3mDFBhnyKvM2WVJY6M5Ij96eHZpjPIIib3f"
+).then((response) => response.json())
+  .then((data) => {
+    document.getElementById('photo').attributes('href') = data.url;
+  };
+*/
+
+// Function to fetch NASA picture of the day
+function fetchNASAImage() {
+  // API endpoint
+  const apiEndpoint = "https://api.nasa.gov/planetary/apod";
+
+  // Your API key
+  const apiKey = "LPK8s3mDFBhnyKvM2WVJY6M5Ij96eHZpjPIIib3f";
+
+  // Constructing the API URL with the API key
+  const apiUrl = `${apiEndpoint}?api_key=${apiKey}`;
+
+  // Fetching data from the API
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // Extracting the image URL from the response
+      const imageUrl = data.url;
+
+      // Setting the image URL as the src attribute of the img tag
+      document.getElementById("photo").src = imageUrl;
+
+      // Add event listener to the image for full-screen view
+      document.getElementById("photo").addEventListener("click", function () {
+        window.open(imageUrl, "_blank").focus();
+      });
+    })
+
+    .catch((error) => console.error("Error fetching NASA image:", error));
+}
+
+// Call the fetchNASAImage function when the page is loaded
+fetchNASAImage();
