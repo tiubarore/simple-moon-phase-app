@@ -78,14 +78,14 @@ function fetchNASAImage() {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      // Extracting the image URL from the response
-      const imageUrl = data.url;
-
-      // Setting the image URL as the src attribute of the img tag
-      document.getElementById("photo").src = imageUrl;
-
       // Add event listener to the image for full-screen view
       document.getElementById("photo").addEventListener("click", function () {
+        // Extracting the image URL from the response
+        const imageUrl = data.url;
+
+        // Setting the image URL as the src attribute of the img tag
+        document.getElementById("photo").src = imageUrl;
+
         window.open(imageUrl, "_blank").focus();
       });
     })
